@@ -41,7 +41,7 @@ db.connect((err) => {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => { // Rota da página 'cadastro.ejs'
   res.render('index.ejs');
 });
 
@@ -56,23 +56,35 @@ app.post('/login', (req, res) => {
     if (results.length > 0) {
       req.session.loggedin = true;
       req.session.name = name;
-      res.redirect('/dashboard');
+      res.redirect('/');
     } else {
-      res.send('Credenciais incorretas. <a href="/">Tente novamente</a>');
+      res.send('Credenciais incorretas. <a href="/log-in">Tente novamente</a>');
     }
   });
 });
 
-app.get('/dashboard', (req, res) => {
+app.get('/', (req, res) => {
   if (req.session.loggedin) {
-    res.render('dashboard.ejs'); // Substitua 'dashboard.ejs' pelo nome da página do dashboard.
+    res.render('index.ejs'); // Substitua 'index.ejs' pelo nome da página do dashboard.
   } else {
-    res.send('Faça login para acessar esta página. <a href="/">Login</a>');
+    res.send('Faça login para acessar esta página. <a href="/log-in">Login</a>');
   }
 });
 
-app.get('/cadastro', (req, res) => {
+app.get('/cadastro', (req, res) => { // Rota da página 'cadastro.ejs'
   res.render('cadastro.ejs');
+});
+
+app.get('/log-in', (req, res) => { // Rota da página 'login.ejs'
+  res.render('login.ejs');
+});
+
+app.get('/sobre', (req, res) => { // Rota da página 'sobre.ejs'
+  res.render('sobre.ejs');
+});
+
+app.get('/planos', (req, res) => { // Rota da página 'planos.ejs'
+  res.render('planos.ejs');
 });
 
 app.post('/cadastro', (req, res) => {
@@ -84,7 +96,7 @@ app.post('/cadastro', (req, res) => {
     if (err) throw err;
 
     // Redirecione para a página de login após o cadastro bem-sucedido.
-    res.redirect('/');
+    res.redirect('/log-in');
   });
 });
 

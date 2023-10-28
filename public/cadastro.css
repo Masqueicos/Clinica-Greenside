@@ -4,6 +4,26 @@
     box-sizing: border-box;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 html {
     height: 100%;
 }
@@ -34,8 +54,11 @@ a {
 }
 
 .left_img {
-    max-width: 73.8%;
+    display: flex;
+    max-width: 80%;
     height: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 
