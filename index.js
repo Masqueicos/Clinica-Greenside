@@ -87,6 +87,10 @@ app.get('/planos', (req, res) => { // Rota da página 'planos.ejs'
   res.render('planos.ejs');
 });
 
+app.get('/medicos', (req, res) => { // Rota da página 'medicos.ejs'
+  res.render('medicos.ejs');
+});
+
 app.post('/cadastro', (req, res) => {
   const { name, senha, cpf, email } = req.body;
 
