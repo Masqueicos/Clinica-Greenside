@@ -129,6 +129,10 @@ a {
     width: 575px;
 }
 
+.searchbar input:focus {
+    border: none;
+}
+
 .searchbar img {
     max-width: 17px;
     min-width: 17px;
@@ -162,6 +166,20 @@ main {
     font-weight: 300;
     font-size: 20px;
     margin-top: 5px;
+}
+
+.section_btn {
+    border: none;
+    color: #075744;
+    font-weight: 900;
+    border-radius: 7px;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    margin-top: 15px;
 }
 
 /* SECTION_SERVICOS */
@@ -198,7 +216,32 @@ main {
 }
 
 /*SECTION_ATENDIMENTO*/
+.section_atendimento {
+    display: flex;
+    padding: 30px 15px 0px 15px;
+    background-color: #075744;
+    max-height: fit-content;
+    margin-bottom: 0;
+}
 
+.section_atendimento p {
+    text-align: left;
+    color: white;
+}
+
+.section_atendimento img {
+    max-height: 50%;
+    max-width: auto;
+    float: right;
+    padding-right: 35%;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section_atendimento_column {
+    padding-bottom: 0;
+    margin-bottom: -391px
+}
 
 
 /* FOOTER */
