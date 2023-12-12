@@ -77,7 +77,7 @@ Node.js é um software de código aberto que permite a execução de códigos Ja
     sudo apt install python3-pip
     ```
     
-2. Instale o user ***nodeenv*** através do pip
+2. Instale o ******user ***nodeenv*** através do pip
     
     ```bash
     pip3 install --user nodeenv
@@ -113,8 +113,11 @@ Express.JS é um framework de software livre e de código aberto para NodeJS que
     npm install express mysql2 ejs express-session body-parser
     ```
     
-2. Abra o phpMyAdmin no navegador e crie uma database chamada ***users***
-3. Execute o seguinte código na seção SQL
+
+### Configurações Finais
+
+1. Abra o phpMyAdmin no navegador e crie uma database chamada ***users***
+2. Execute o seguinte código na seção SQL
     
     ```sql
     CREATE TABLE users (
@@ -124,4 +127,91 @@ Express.JS é um framework de software livre e de código aberto para NodeJS que
         cpf VARCHAR(14) NOT NULL UNIQUE,
         senha VARCHAR(255) NOT NULL
     );
+    
+    CREATE TABLE IF NOT EXISTS consultas (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nome_do_paciente VARCHAR(255) NOT NULL,
+        data_da_consulta DATE NOT NULL
+    );
+    
+    CREATE TABLE IF NOT EXISTS anotacoes (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT,
+        data DATETIME NOT NULL,
+        anotacao TEXT NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+    ```
+    
+3. Volte a pagina inicial execute o seguinte código na seção SQL
+    
+    ```sql
+    CREATE DATABASE meu_banco_de_dados;
+    
+    USE meu_banco_de_dados;
+    
+    CREATE TABLE consultas (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      dia DATE,
+      horario TIME
+    );
+    
+    INSERT INTO consultas (dia, horario) VALUES
+      ('2023-12-07', '14:30:00'),
+      ('2023-12-08', '10:00:00'),
+      ('2023-12-09', '16:45:00');
+    ```
+    
+4. Entre na pasta ***Main*** e confira se o arquivo “***package.json***” está atualizado como mostrado abaixo
+    
+    ```json
+    {
+      "name": "Main",
+      "version": "1.0.0",
+      "description": "",
+      "main": "app.js",
+      "dependencies": {
+        "body-parser": "^1.20.2",
+        "bootstrap": "^5.3.2",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "mysql2": "^3.6.2",
+        "path": "^0.12.7",
+        "pusher": "^5.1.3",
+        "select2": "^4.1.0-rc.0",
+        "socket.io": "^4.7.2",
+        "socket.io-client": "^4.7.2"
+      },
+    ```
+    
+    Use o *********************************npm init -y********************************* no console da pasta para criar os arquivos json caso eles ainda não existam, e depois use o código abaixo
+    
+    ```bash
+    npm install body-parser bootstrap cookie-parser cors ejs express express-session mysql2 path pusher select2 [socket.io](http://socket.io/) socket.io-client
+    ```
+    
+5. Entre na pasta ***Consultas*** e confira se o arquivo “***package.json***” está atualizado como mostrado abaixo
+    
+    ```json
+    {
+      "name": "Consultas",
+      "version": "1.0.0",
+      "description": "",
+      "main": "app.js",
+      "dependencies": {
+        "body-parser": "^1.20.2",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "moment": "^2.29.4",
+        "mysql2": "^3.6.5"
+      },
+    ```
+    
+    Use o *********************************npm init -y********************************* no console da pasta para criar os arquivos json caso eles ainda não existam, e depois use o código abaixo
+    
+    ```bash
+    npm install body-parser ejs express moment mysql2
     ```
